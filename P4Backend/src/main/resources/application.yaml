@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: P4Backend
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5455/p4DB
+    username: p4_user
+    password: password
+
+    jpa:
+      generate-ddl: false
+      hibernate:
+        ddl-auto: none
+
+    flyway:
+      enabled: true
+      locations: classpath:db/migration
+

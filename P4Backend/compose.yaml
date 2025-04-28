@@ -1,0 +1,11 @@
+services:
+  postgres:
+    container_name: p4_container
+    image: 'postgres'
+    restart: unless-stopped
+    environment:
+      - 'POSTGRES_DB=p4DB'
+      - 'POSTGRES_PASSWORD=password'
+      - 'POSTGRES_USER=p4_user'
+    ports:
+      - '5455:5432'
