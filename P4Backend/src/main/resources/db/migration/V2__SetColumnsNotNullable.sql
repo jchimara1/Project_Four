@@ -1,0 +1,14 @@
+ALTER TABLE vehicle
+    ALTER COLUMN is_used SET NOT NULL;
+
+ALTER TABLE vehicle
+    ALTER COLUMN make SET NOT NULL;
+
+ALTER TABLE vehicle
+    ALTER COLUMN model SET NOT NULL;
+
+ALTER TABLE vehicle
+    ALTER COLUMN price SET NOT NULL;
+
+ALTER TABLE vehicle
+    ALTER COLUMN year SET NOT NULL;
