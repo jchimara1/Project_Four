@@ -2,30 +2,41 @@ package swf.army.mil.p4backend.service;
 
 import org.springframework.stereotype.Service;
 import swf.army.mil.p4backend.Entity.Vehicle;
+import swf.army.mil.p4backend.repository.VehicleRepository;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class VehicleService {
 
+    private VehicleRepository vehicleRepository;
+
     public List<Vehicle> getAll() {
-        return null;
+        return vehicleRepository.findAll();
     }
 
-    public Vehicle getById(long l) {
-        return null;
+    public Vehicle getById(long id) {
+        return vehicleRepository.findById(id).orElse(null);
     }
 
-    public Boolean deleteById(long l) {
-        return true;
+    public Boolean deleteById(long id) {
+        boolean isPresent = vehicleRepository.existsById(id);
+        vehicleRepository.deleteById(id);
+        return isPresent;
     }
 
     public Vehicle create(Vehicle vehicle) {
-        return null;
+        return vehicleRepository.save(vehicle);
     }
 
-    public Optional<Vehicle> update(Vehicle vehicle, Long id) {
-        return Optional.empty();
+    public Vehicle update(Vehicle vehicle, Long id) {
+        var current = vehicleRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("No vehicle by that id"));
+        vehicle.setId(id);
+        vehicle.setMake(vehicle.getMake() != null ? vehicle.getMake() : current.getMake());
+        vehicle.setModel(vehicle.getModel() != null ? vehicle.getModel() : current.getModel());
+        vehicle.setYear(vehicle.getYear() != null ? vehicle.getYear() : current.getYear());
+        vehicle.setPrice(vehicle.getPrice() != null ? vehicle.getPrice() : current.getPrice());
+        vehicle.setUsed(vehicle.getUsed() != null ? vehicle.getUsed() : current.getUsed());
+        return vehicleRepository.save(vehicle);
     }
 }

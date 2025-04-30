@@ -13,7 +13,6 @@ import swf.army.mil.p4backend.Entity.Vehicle;
 import swf.army.mil.p4backend.service.VehicleService;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -32,7 +31,7 @@ public class VehicleController {
     }
 
     @GetMapping(value = {"/vehicle/{id}", "/vehicle/{id}/"})
-    public Vehicle getAll(@PathVariable long id) {
+    public Vehicle getVehicleById(@PathVariable long id) {
         return vehicleService.getById(id);
     }
 
@@ -47,7 +46,7 @@ public class VehicleController {
     }
 
     @PatchMapping(value = {"/vehicle/{id}", "/vehicle/{id}/"})
-    public Optional<Vehicle> update(@RequestBody Vehicle vehicle, @PathVariable long id) {
+    public Vehicle update(@RequestBody Vehicle vehicle, @PathVariable long id) {
         return vehicleService.update(vehicle, id);
     }
 }
