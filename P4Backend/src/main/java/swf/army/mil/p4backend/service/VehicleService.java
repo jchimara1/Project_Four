@@ -1,5 +1,6 @@
 package swf.army.mil.p4backend.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import swf.army.mil.p4backend.Entity.Vehicle;
 import swf.army.mil.p4backend.repository.VehicleRepository;
@@ -9,6 +10,7 @@ import java.util.List;
 @Service
 public class VehicleService {
 
+    @Autowired
     private VehicleRepository vehicleRepository;
 
     public List<Vehicle> getAll() {

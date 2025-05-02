@@ -89,6 +89,7 @@ class VehicleServiceTest {
 
         @Test
         void givenValidId_shouldRemoveVehicleById() {
+            when(vehicleRepository.existsById(vehicle1.getId())).thenReturn(true);
             doNothing().when(vehicleRepository).deleteById(vehicle1.getId());
 
             var result = vehicleService.deleteById(vehicle1.getId());

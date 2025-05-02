@@ -4,11 +4,11 @@ import VehicleInputForm from "./components/VehicleInputForm.tsx";
 function App() {
 
 
-  return (
-    <>
-<VehicleInputForm/>
-    </>
-  )
+    return (
+        <>
+            <VehicleInputForm/>
+        </>
+    )
 }
 
 export default App
